@@ -13,7 +13,7 @@ import { a } from '@react-spring/three';
 
 import islandScene from "../assets/3d/island.glb";
 
-const Island = ({isRotating,setIsRotating,...props}) => {
+const Island = ({isRotating,setIsRotating,setCurrentStage,...props}) => {
 
 
   const islandRef = useRef();
@@ -22,8 +22,8 @@ const Island = ({isRotating,setIsRotating,...props}) => {
   
   const lastX = useRef(0);
   const rotationSpeed =useRef(0);
-  const dampingFactor = 1;
-
+  const dampingFactor = 0.979;
+  
   const handlePointerDown =(e)=>{
     e.stopPropagation();
     e.preventDefault();
@@ -111,7 +111,7 @@ const Island = ({isRotating,setIsRotating,...props}) => {
       islandRef.current.rotation.y += rotationSpeed.current;
     }
     else {
-      const rotation = islandRef.current.rotaion.y;
+      const rotation = islandRef.current.rotation.y;
 
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
