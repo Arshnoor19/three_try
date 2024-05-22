@@ -43,30 +43,34 @@ const HandleSubmit =(e)=>{
     showAlert({show:true, text:'Massege sent successfuly!',type:'success'})
     
     setTimeout(()=>{
-      hideAlert();
+      hideAlert(false);
       setcurrentAnimation('idle');
       setForm({name:'',email:'',message:''})
     },[3000])
 
 
    
-  }).catch((error)=>{
+  }, (error)=>{
      setisLoading(false);
      setcurrentAnimation('idle');
+     console.error(error);
      showAlert({show:true, text:'Dindt recieve',type:'danger'})
 
-     console.log(error);
-  })
+    
+  });
 
 };
 
   return (
     <section className="relative flex lg:flex-row flex-col max-container">
-       {alert.show && <Alert {...alert}  />}
-       <Alert {...alert}  />
+       
 
     <div className="flex-1 min-w-[50%] flex flex-col">
-      <h1 className="head-text">Get in touch</h1>
+      <h1>
+      <b>Welcome to the get in touch page of my portfolio!!
+         <br/>
+         this fox is really friendly.... <br/> Go on type in your messege and see what happens and once i get your message it will stop running!</b>
+      </h1>
       <form className="w-full flex flex-col gap-7 mt-14"
          
          onSubmit={HandleSubmit}
